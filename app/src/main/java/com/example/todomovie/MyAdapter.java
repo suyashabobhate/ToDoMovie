@@ -1,5 +1,6 @@
 package com.example.todomovie;
 
+
 import android.content.Context;
 
 import androidx.fragment.app.Fragment;
@@ -18,14 +19,11 @@ class MyAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                ToWatch towatchFragment = new ToWatch();
-                return towatchFragment;
+                ToWatch toWatchFragment = new ToWatch();
+                return toWatchFragment;
             case 1:
-                Watching watchingFragment = new Watching();
-                return watchingFragment;
-            case 2:
-                Watched watchedFragment = new Watched();
-                return watchedFragment;
+                Watched WatchedFragment = new Watched();
+                return WatchedFragment;
             default:
                 return null;
         }
