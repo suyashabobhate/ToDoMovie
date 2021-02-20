@@ -5,25 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="412dp"
-        android:layout_height="675dp"
-        android:background="@drawable/bg"
+    <ListView
+        android:id="@+id/sampleListView"
+        android:layout_width="wrap_content"
+        android:layout_height="600dp"
+        android:background="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="#CCCCCC"
+        android:dividerHeight="1dp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-1dp"
-        tools:layout_editor_absoluteY="55dp">
-
-        <ListView
-            android:id="@+id/sampleListView"
-            android:layout_width="match_parent"
-            android:layout_height="485dp"
-            android:layout_marginBottom="10dp"
-            android:background="@android:color/transparent"
-            android:cacheColorHint="@android:color/transparent"
-            android:divider="#CCCCCC"
-            android:dividerHeight="1dp"
-            android:paddingLeft="2dp" />
-
-    </RelativeLayout>
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="77dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

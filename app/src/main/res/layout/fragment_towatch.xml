@@ -5,37 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="423dp"
-        android:layout_height="560dp"
-        android:background="@drawable/bg"
+
+    <ListView
+        android:id="@+id/sampleListView"
+        android:layout_width="wrap_content"
+        android:layout_height="600dp"
+        android:background="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="#CCCCCC"
+        android:dividerHeight="1dp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-11dp"
-        tools:layout_editor_absoluteY="55dp">
-
-        <Button
-            android:id="@+id/find"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/sampleListView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="-80dp"
-            android:background="@android:color/holo_blue_light"
-            android:text="Find"
-            android:textStyle="italic" />
-
-        <ListView
-            android:id="@+id/sampleListView"
-            android:layout_width="413dp"
-            android:layout_height="447dp"
-            android:layout_marginBottom="10dp"
-            android:background="@android:color/transparent"
-            android:cacheColorHint="@android:color/transparent"
-            android:divider="#CCCCCC"
-            android:dividerHeight="1dp"
-            android:paddingLeft="2dp" />
-
-    </RelativeLayout>
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="77dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

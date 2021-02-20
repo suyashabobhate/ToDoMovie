@@ -27,98 +27,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //db.addSelected((ArrayList<String>) list);
-        //deleteDatabase("KMovieLove");
+        //deleteDatabase("MovieD");
         //db.close();
-
-
         tabLayoutMethod();
     }
-
-    /*public void Movie_generator() {
-
-        int index=db.getRandomId();
-        String s= db.getList(index,"List");
-        Toast.makeText(this, "The KMovie which chose you is " + s, Toast.LENGTH_SHORT).show();
-        updateToWatch(index,s);
-        SetAdapter();
-    }
-
-    private AlertDialog AskOption(final int pos)
-    {
-        AlertDialog myQuittingDialogBox = new AlertDialog.Builder(this)
-                .setTitle("Watched")
-                .setMessage("Have you watched this Movie?")
-
-
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        String delete= (String) listview.getItemAtPosition(pos);;
-                        delete(delete);
-                        dialog.dismiss();
-                    }
-
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        dialog.dismiss();
-
-                    }
-                })
-                .create();
-
-        return myQuittingDialogBox;
-    }
-
-    public void SetAdapter() {
-        toWatch = db.getAllMovie("ToWatch");
-        List<String> toWatchList = new ArrayList<>();
-        for (Movie Movie : toWatch) {
-            toWatchList.add(Movie.getName());
-        }
-        listview = findViewById(R.id.sampleListView);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                toWatchList);
-
-        listview.setAdapter(arrayAdapter);
-
-        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                                           int pos, long id) {
-                AlertDialog dialbox = AskOption(pos);
-                dialbox.show();
-                return true;
-            }
-        });
-    }
-
-    public void delete(String delete){
-        int id=db.getId(delete);
-        db.deleteMovie(id,"ToWatch");
-        listview.invalidateViews();
-        addToWatched(delete);
-    }
-
-    public void updateToWatch(int index,String s){
-        db.deleteMovie(index,"List");
-        db.addMovie(s,"ToWatch");
-    }
-
-    public void addToWatched(String delete){
-        ArrayAdapter<String> adapter= (ArrayAdapter<String>) listview.getAdapter();
-        listview.setAdapter(adapter);
-        adapter.remove(delete);
-        db.addMovie(delete,"Watched");
-        watched=db.getAllMovie("Watched");
-        List<String> WatchedList=new ArrayList<>();
-        for(Movie Movie:watched){
-            WatchedList.add(Movie.getName());
-        }
-    }*/
 
     public void tabLayoutMethod(){
         tabLayout = findViewById(R.id.tablayout);

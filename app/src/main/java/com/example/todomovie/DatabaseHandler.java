@@ -75,18 +75,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
     }
-    // code to add the new contact
-    public void addMovieList(Movie Movie) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(KEY_Name, Movie.getName()); // Contact Name
-
-        // Inserting Row
-        db.insert(TABLE_List, null, values);
-        //2nd argument is String containing nullColumnHack
-        db.close(); // Closing database connection
-    }
 
     void addMovie(String s,String table) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -205,16 +193,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Getting contacts Count
-    public int getMovieCount() {
-        String countQuery = "SELECT  * FROM " + TABLE_List;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
-        //cursor.close();
 
-        // return count
-        return cursor.getCount();
-    }
 
 
 }
