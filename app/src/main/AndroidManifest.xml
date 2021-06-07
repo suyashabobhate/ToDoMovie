@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ToWatch">
+        </activity>
+        <activity android:name=".Watched">
+        </activity>
     </application>
 
 </manifest>

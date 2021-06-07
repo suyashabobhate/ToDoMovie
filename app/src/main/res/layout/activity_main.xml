@@ -9,34 +9,34 @@
 
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tablayout"
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        tools:ignore="MissingConstraints">
+        android:layout_height="wrap_content"
+        android:background="#F7FFFFFF"
+        app:tabIndicatorColor="#673AB7">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To Watch" />
+
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Watched" />
 
     </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager"
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="487dp"
-        android:paddingTop="35dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp" >
-    </androidx.viewpager.widget.ViewPager>
+        android:layout_height="650dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout">
 
-    <Button
-        android:id="@+id/find"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="-53dp"
-        android:layout_alignBottom="@id/viewpager"
-        android:layout_centerHorizontal="true"
-        android:background="@android:color/holo_blue_light"
-        android:text="Find"
-        android:textStyle="italic"
-        tools:ignore="MissingConstraints,NotSibling"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="540dp" />
+    </FrameLayout>
+
 
 </RelativeLayout>

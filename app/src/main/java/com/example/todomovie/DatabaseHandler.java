@@ -1,6 +1,7 @@
 package com.example.todomovie;
 
 
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -18,7 +19,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_List = "List";
     private static final String TABLE_Towatch = "ToWatch";
     private static final String TABLE_Watched = "Watched";
-    private static final String TABLE_Watching = "Watching";
     private static final String KEY_ID = "id";
     private static final String KEY_Name = "name";
 
@@ -40,15 +40,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 +  ")";
         db.execSQL(CREATE_CONTACTS_TABLE2);
 
-        String CREATE_CONTACTS_TABLE3= "CREATE TABLE " + TABLE_Watching + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_Name + " TEXT "
-                +  ")";
-        db.execSQL(CREATE_CONTACTS_TABLE3);
 
-        String CREATE_CONTACTS_TABLE4 = "CREATE TABLE " + TABLE_Watched + "("
+        String CREATE_CONTACTS_TABLE3 = "CREATE TABLE " + TABLE_Watched + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_Name + " TEXT"
                 +  ")";
-        db.execSQL(CREATE_CONTACTS_TABLE4);
+        db.execSQL(CREATE_CONTACTS_TABLE3);
     }
 
 
@@ -58,7 +54,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_List);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_Towatch);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_Watching);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_Watched);
 
         // Create tables again
@@ -69,11 +64,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_List);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_Towatch);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_Watching);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_Watched);
 
         // Create tables again
         onCreate(db);
+    }
+    // code to add the new contact
+    public void addMovieList(Movie Movie) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_Name, Movie.getName()); // Contact Name
+
+        // Inserting Row
+        db.insert(TABLE_List, null, values);
+        //2nd argument is String containing nullColumnHack
+        db.close(); // Closing database connection
     }
 
     void addMovie(String s,String table) {
@@ -193,7 +199,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    // Getting contacts Count
+    public int getMovieCount() {
+        String countQuery = "SELECT  * FROM " + TABLE_List;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        //cursor.close();
 
+        // return count
+        return cursor.getCount();
+    }
 
 
 }

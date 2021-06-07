@@ -43,7 +43,7 @@ public class ToWatch extends Fragment {
                 else {
                         db.addSelected((ArrayList<String>) list);
                 }
-                final Button find = getActivity().findViewById(R.id.find);
+                final Button find = view.findViewById(R.id.find);
                 find.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

@@ -1,11 +1,15 @@
 package com.example.todomovie;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import com.google.android.material.tabs.TabLayout;
@@ -22,7 +26,11 @@ public class MainActivity extends AppCompatActivity {
     public ListView listview;
     final DatabaseHandler db = new DatabaseHandler(this);
     TabLayout tabLayout;
-    ViewPager viewPager;
+    FrameLayout frameLayout;
+    Fragment fragment = null;
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,21 +132,33 @@ public class MainActivity extends AppCompatActivity {
     }*/
 
     public void tabLayoutMethod(){
-        tabLayout = findViewById(R.id.tablayout);
-        viewPager = findViewById(R.id.viewpager);
-        tabLayout.addTab(tabLayout.newTab().setText("To Watch"));
-        tabLayout.addTab(tabLayout.newTab().setText("Watched"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        final MyAdapter adapter = new MyAdapter(this,getSupportFragmentManager(),
-                tabLayout.getTabCount());
-        viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout=(TabLayout)findViewById(R.id.tabLayout);
+        frameLayout=(FrameLayout)findViewById(R.id.frameLayout);
+
+        fragment = new ToWatch();
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        fragmentTransaction.commit();
+
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                startActivity(new Intent(MainActivity.this,ToWatch.class));
-                startActivity(new Intent(MainActivity.this,Watched.class));
-                viewPager.setCurrentItem(tab.getPosition());
+                switch (tab.getPosition()) {
+                    case 0:
+                        fragment = new ToWatch();
+                        break;
+                    case 1:
+                        fragment = new Watched();
+                        break;
+                }
+                FragmentManager fm = getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.frameLayout, fragment);
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                ft.commit();
             }
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
